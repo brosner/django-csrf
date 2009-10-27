@@ -6,7 +6,7 @@ from django.contrib.sessions.middleware import SessionMiddleware
 from django.conf import settings
 from django.template import RequestContext, Template
 
-from django.utils.importlib import import_module
+from django_csrf.context_processors import csrf
 from django_csrf.middleware import CsrfMiddleware, CsrfViewMiddleware, csrf_exempt
 from django_csrf.utils.importlib import import_module
 
