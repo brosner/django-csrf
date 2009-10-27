@@ -8,10 +8,6 @@ against request forgeries from other sites.
 import itertools
 import re
 import random
-try:
-    from functools import wraps
-except ImportError:
-    from django.utils.functional import wraps  # Python 2.3, 2.4 fallback.
 
 from django.conf import settings
 from django.core.urlresolvers import get_callable
@@ -263,36 +259,3 @@ class CsrfMiddleware(object):
     def process_view(self, request, callback, callback_args, callback_kwargs):
         return self.view_middleware.process_view(request, callback, callback_args,
                                                  callback_kwargs)
-
-def csrf_response_exempt(view_func):
-    """
-    Modifies a view function so that its response is exempt
-    from the post-processing of the CSRF middleware.
-    """
-    def wrapped_view(*args, **kwargs):
-        resp = view_func(*args, **kwargs)
-        resp.csrf_exempt = True
-        return resp
-    return wraps(view_func)(wrapped_view)
-
-def csrf_view_exempt(view_func):
-    """
-    Marks a view function as being exempt from CSRF view protection.
-    """
-    # We could just do view_func.csrf_exempt = True, but decorators
-    # are nicer if they don't have side-effects, so we return a new
-    # function.
-    def wrapped_view(*args, **kwargs):
-        return view_func(*args, **kwargs)
-    wrapped_view.csrf_exempt = True
-    return wraps(view_func)(wrapped_view)
-
-def csrf_exempt(view_func):
-    """
-    Marks a view function as being exempt from the CSRF checks
-    and post processing.
-
-    This is the same as using both the csrf_view_exempt and
-    csrf_response_exempt decorators.
-    """
-    return csrf_response_exempt(csrf_view_exempt(view_func))
