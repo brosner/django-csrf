@@ -1,4 +1,4 @@
-from django.contrib.csrf.middleware import get_token
+from django_csrf.middleware import get_token
 from django.utils.functional import lazy
 
 def csrf(request):

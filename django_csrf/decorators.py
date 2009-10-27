@@ -1,4 +1,4 @@
-from django.contrib.csrf.middleware import CsrfViewMiddleware
+from django_csrf.middleware import CsrfViewMiddleware
 from django.utils.decorators import decorator_from_middleware
 
 csrf_protect = decorator_from_middleware(CsrfViewMiddleware)
