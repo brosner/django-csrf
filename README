@@ -1,0 +1,2 @@
+Backport of the CSRF (Cross-Site Request Forgery) to Django versions prior to
+1.2.
