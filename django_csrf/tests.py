@@ -2,12 +2,13 @@
 
 from django.test import TestCase
 from django.http import HttpRequest, HttpResponse
-from django_csrf.middleware import CsrfMiddleware, CsrfViewMiddleware, csrf_exempt
-from django_csrf.context_processors import csrf
 from django.contrib.sessions.middleware import SessionMiddleware
 from django.utils.importlib import import_module
 from django.conf import settings
 from django.template import RequestContext, Template
+
+from django_csrf.middleware import CsrfMiddleware, CsrfViewMiddleware, csrf_exempt
+from django_csrf.context_processors import csrf
 
 # Response/views used for CsrfResponseMiddleware and CsrfViewMiddleware tests
 def post_form_response():
