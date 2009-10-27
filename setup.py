@@ -12,6 +12,7 @@ setup(
     url = "http://github.com/brosner/django-csrf",
     packages = [
         "django_csrf",
+        "django_csrf.templatetags",
     ],
     classifiers = [
         "Development Status :: 3 - Alpha",

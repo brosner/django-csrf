@@ -28,7 +28,7 @@ def post_form_view(request):
 
 # Response/views used for template tag tests
 def _token_template():
-    return Template("{% csrf_token %}")
+    return Template("{% load csrf_tags %}{% csrf_token %}")
 
 def _render_csrf_token_template(req):
     context = RequestContext(req, processors=[csrf])
