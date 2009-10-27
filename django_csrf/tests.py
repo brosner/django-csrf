@@ -7,7 +7,8 @@ from django.conf import settings
 from django.template import RequestContext, Template
 
 from django_csrf.context_processors import csrf
-from django_csrf.middleware import CsrfMiddleware, CsrfViewMiddleware, csrf_exempt
+from django_csrf.decorators import csrf_exempt
+from django_csrf.middleware import CsrfMiddleware, CsrfViewMiddleware
 from django_csrf.utils.importlib import import_module
 
 # Response/views used for CsrfResponseMiddleware and CsrfViewMiddleware tests
